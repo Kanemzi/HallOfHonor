@@ -5,3 +5,9 @@ api-version: 1.13
 author: Ernest570
 description: A RP Bonus plugin
 commands:
+   createtotem:
+      usage: /<command> <x> <y> <z> <name>
+      description: Creates a new totem at the given coordinates
+   removetotem:
+      usage: /<command> <name>
+      description: Removes a totem
