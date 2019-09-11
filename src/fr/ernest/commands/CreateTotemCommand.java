@@ -21,7 +21,7 @@ public class CreateTotemCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (!(sender instanceof Player))
 			return false;
-		
+
 		if (args.length != 4)
 			return false;
 
@@ -37,19 +37,17 @@ public class CreateTotemCommand implements CommandExecutor {
 
 		String name = args[3];
 
-		if (plugin.getTotemsManager().getTotems().containsKey(name)) {
+		if (plugin.getTotemsManager().totemExists(name)) {
 			sender.sendMessage(
 					ChatColor.RED + "The totem " + ChatColor.YELLOW + name + ChatColor.RED + " does already exists");
 			return true;
 		}
 
-		AbstractTotem totem = new AbstractTotem(location, name);
-		plugin.getTotemsManager().getTotems().put(name, totem);
+		plugin.getTotemsManager().addTotem(name, location);
+		plugin.getStoreManager().saveStore("totems");
 
 		sender.sendMessage(ChatColor.GREEN + "The totem " + ChatColor.YELLOW + name + ChatColor.GREEN
-				+ " has been created at " + ChatColor.AQUA
-				+ location.getBlockX() + " "
-				+ location.getBlockY() + " "
+				+ " has been created at " + ChatColor.AQUA + location.getBlockX() + " " + location.getBlockY() + " "
 				+ location.getBlockZ());
 		return true;
 	}

@@ -24,7 +24,7 @@ public class StoreManager {
 		stores = new HashMap<>();
 	}
 
-	public void addStore(String name) {
+	public FileConfiguration addStore(String name) {
 		File storeFile = new File(plugin.getDataFolder(), name + ".yml");
 
 		if (!storeFile.exists()) {
@@ -39,10 +39,15 @@ public class StoreManager {
 		Bukkit.getServer().getLogger().info("The " + name + ".yml file has been loaded");
 
 		stores.put(name, new Pair<>(config, storeFile));
+		return config;
 	}
 
 	public FileConfiguration getStore(String name) {
 		return stores.get(name).getLeft();
+	}
+	
+	public File getFile(String name) {
+		return stores.get(name).getRight();
 	}
 
 	public void reloadStore(String name) {

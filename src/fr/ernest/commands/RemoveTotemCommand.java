@@ -21,16 +21,14 @@ public class RemoveTotemCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (!(sender instanceof Player))
 			return false;
-		
+
 		if (args.length != 1)
 			return false;
 
-		Player player = (Player) sender;
-
 		String name = args[0];
 
-		if (plugin.getTotemsManager().getTotems().containsKey(name)) {
-			plugin.getTotemsManager().getTotems().remove(name);
+		if (plugin.getTotemsManager().totemExists(name)) {
+			plugin.getTotemsManager().removeTotem(name);
 			sender.sendMessage(
 					ChatColor.GREEN + "The totem " + ChatColor.YELLOW + name + ChatColor.GREEN + " has been removed");
 			return true;
