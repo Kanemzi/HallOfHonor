@@ -1,8 +1,13 @@
 package fr.ernest.hoh;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import fr.ernest.commands.CreateTotemCommand;
@@ -14,7 +19,7 @@ public class TotemsManager {
 	private HallOfHonor plugin = HallOfHonor.getPlugin(HallOfHonor.class);
 	private FileConfiguration store;
 
-	private HashMap<String, AbstractTotem> totems;
+	private Map<String, AbstractTotem> totems;
 
 	public void setup() {
 		totems = new HashMap<>();
@@ -23,6 +28,9 @@ public class TotemsManager {
 		plugin.getCommand(RemoveTotemCommand.NAME).setExecutor(new RemoveTotemCommand());
 		
 		store = plugin.getStoreManager().addStore("totems");
+		totems.putAll(AbstractTotem.load(store));
+		
+		System.out.println(ChatColor.GOLD + "totems :" + totems);
 	}
 
 	public void addTotem(String name, Location location) {
