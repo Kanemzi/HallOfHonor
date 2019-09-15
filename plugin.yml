@@ -11,3 +11,6 @@ commands:
    removetotem:
       usage: /<command> <name>
       description: Removes a totem
+   settotemowner:
+      usage: /<command> <totem name> <player>
+      description: Gives the totem to a player
