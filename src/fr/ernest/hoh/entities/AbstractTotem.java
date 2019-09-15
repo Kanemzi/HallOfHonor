@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,7 +19,7 @@ import net.md_5.bungee.api.ChatColor;
 public class AbstractTotem {
 	private String name;
 	private Location location;
-	private Player owner;
+	private OfflinePlayer owner;
 
 	private static HallOfHonor plugin = HallOfHonor.getPlugin(HallOfHonor.class);
 
@@ -31,7 +32,7 @@ public class AbstractTotem {
 	/**
 	 * Changes the current owner of the totem
 	 */
-	public void setOwner(Player player) {
+	public void setOwner(OfflinePlayer player) {
 		if (owner != null)
 			return;
 		owner = player;
@@ -44,10 +45,10 @@ public class AbstractTotem {
 	 * Removes the current owner of the totem
 	 * @return the ex-owner of the totem
 	 */
-	public Player removeOwner() {
+	public OfflinePlayer removeOwner() {
 		// @TODO: Play sound
 		plugin.getServer().broadcastMessage(ChatColor.YELLOW + owner.getName() + ChatColor.GOLD + " a perdu le totem " + ChatColor.YELLOW + name);
-		Player oldowner = owner;
+		OfflinePlayer oldowner = owner;
 		owner = null;
 		return oldowner;
 	}
@@ -89,7 +90,7 @@ public class AbstractTotem {
 			AbstractTotem totem = new AbstractTotem(name, new Location(world, x, y, z));
 			String ownerid = section.getString(name + ".owner");
 			if (ownerid != null) {
-				Player owner = Bukkit.getPlayer(UUID.fromString(ownerid));
+				OfflinePlayer owner = Bukkit.getOfflinePlayer(UUID.fromString(ownerid));
 				if (owner != null) totem.setOwner(owner);
 			}
 			totems.put(name, totem);
@@ -106,7 +107,7 @@ public class AbstractTotem {
 		return location;
 	}
 	
-	public Player getOwner() {
+	public OfflinePlayer getOwner() {
 		return owner;
 	}
 	

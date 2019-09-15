@@ -2,6 +2,7 @@ package fr.ernest.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,7 +29,7 @@ public class SetTotemOwnerCommand implements CommandExecutor {
 
 		String name = args[0];
 
-		Player player = Bukkit.getPlayer(args[1]);
+		OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
 
 		if (plugin.getTotemsManager().totemExists(name) && player != null) {
 			AbstractTotem totem = plugin.getTotemsManager().getTotem(name);
