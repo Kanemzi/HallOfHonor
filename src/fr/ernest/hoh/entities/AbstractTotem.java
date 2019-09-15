@@ -37,7 +37,7 @@ public class AbstractTotem {
 			return;
 		owner = player;
 		// @TODO: Play sound
-		plugin.getServer().broadcast("Hall de l'Honneur", ChatColor.GOLD + "Le totem " + ChatColor.YELLOW + name
+		plugin.getServer().broadcastMessage(ChatColor.GOLD + "Le totem " + ChatColor.YELLOW + name
 				+ ChatColor.GOLD + " a été pris par " + ChatColor.YELLOW + owner.getName());
 	}
 

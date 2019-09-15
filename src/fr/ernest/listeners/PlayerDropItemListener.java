@@ -68,7 +68,7 @@ public class PlayerDropItemListener implements Listener {
 	
 	public void revokeTotem(final Player p, final Item i) {
 		final SkullMeta head = (SkullMeta) i.getItemStack().getItemMeta();
-		System.out.println(head.getOwningPlayer().getName() + " " + head.getOwningPlayer().getUniqueId());
+		// System.out.println(head.getOwningPlayer().getName() + " " + head.getOwningPlayer().getUniqueId());
 		
 		// plugin.getServer().broadcastMessage(p.getName() + " balance la tête de "
 		// + ((SkullMeta) i.getItemStack().getItemMeta()).getOwningPlayer().getName());
@@ -113,12 +113,12 @@ public class PlayerDropItemListener implements Listener {
 				if (nearestTotem.getOwner() != null) {
 					OfflinePlayer totemOwner = nearestTotem.getOwner();
 					OfflinePlayer headOwner = head.getOwningPlayer();
-					System.out.println(totemOwner.getUniqueId() + " " + headOwner.getUniqueId());
+					// System.out.println(totemOwner.getUniqueId() + " " + headOwner.getUniqueId());
 					if (totemOwner.getUniqueId().equals(headOwner.getUniqueId())) {
 						nearestTotem.removeOwner();
 						nearestTotem.save(plugin.getStoreManager().getStore("totems"));
 						plugin.getStoreManager().saveStore("totems");
-						System.out.println("OWNER REMOVED " + totemOwner);
+						// System.out.println("OWNER REMOVED " + totemOwner);
 					}
 				} else {
 					System.out.println(nearestTotem.getName());
@@ -130,6 +130,7 @@ public class PlayerDropItemListener implements Listener {
 		}.runTaskTimerAsynchronously(plugin, 0, 5);
 	}
 	
+	// @TODO : trouver un système plus safe basé sur les UUID des joueurs (possibilité de changement de pseudo)
 	public void claimTotem(final Player p, final Item i, final BannerMeta b) {
 		new BukkitRunnable() {
 
@@ -163,12 +164,11 @@ public class PlayerDropItemListener implements Listener {
 				if (nearestTotem == null || minDistance > 2)
 					return;
 
-				if (nearestTotem.getOwner() != null) {
-					OfflinePlayer totemOwner = nearestTotem.getOwner();
-					OfflinePlayer bannerOwner = Bukkit.getPlayer(b.getDisplayName());
-					System.out.println(totemOwner.getUniqueId() + " " + bannerOwner.getUniqueId());
-					if (totemOwner.getUniqueId().equals(bannerOwner.getUniqueId())) {
-						nearestTotem.removeOwner();
+				if (nearestTotem.getOwner() == null) {
+					OfflinePlayer bannerOwner = Bukkit.getOfflinePlayer(b.getDisplayName());
+					// System.out.println(totemOwner.getUniqueId() + " " + bannerOwner.getUniqueId());
+					if (bannerOwner.getUniqueId() != null) {
+						nearestTotem.setOwner(bannerOwner);
 						nearestTotem.save(plugin.getStoreManager().getStore("totems"));
 						plugin.getStoreManager().saveStore("totems");
 						// System.out.println("OWNER REMOVED " + totemOwner);
