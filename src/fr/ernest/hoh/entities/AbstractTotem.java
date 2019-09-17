@@ -38,7 +38,7 @@ public class AbstractTotem {
 		owner = player;
 		// @TODO: Play sound
 		plugin.getServer().broadcastMessage(ChatColor.GOLD + "Le totem " + ChatColor.YELLOW + name
-				+ ChatColor.GOLD + " a été pris par " + ChatColor.YELLOW + owner.getName());
+				+ ChatColor.GOLD + " a ï¿½tï¿½ pris par " + ChatColor.YELLOW + owner.getName());
 	}
 
 	/**
@@ -78,9 +78,11 @@ public class AbstractTotem {
 	 * Loads all the totems from the store
 	 */
 	public static Map<String, AbstractTotem> load(FileConfiguration store) {
-
+		
 		Map<String, AbstractTotem> totems = new HashMap<>();
 		ConfigurationSection section = store.getConfigurationSection("totems");
+		if (section == null) return totems;
+				
 		World world = plugin.getServer().getWorlds().get(0);
 
 		for (String name : section.getKeys(false)) {
