@@ -1,26 +1,9 @@
 package fr.ernest.hoh;
 
-import java.util.List;
-
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Banner;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.ernest.hoh.utils.StoreManager;
 import fr.ernest.listeners.PlayerDropItemListener;
-import net.md_5.bungee.api.ChatColor;
 
 public class HallOfHonor extends JavaPlugin {
 
