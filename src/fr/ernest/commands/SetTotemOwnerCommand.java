@@ -29,6 +29,7 @@ public class SetTotemOwnerCommand implements CommandExecutor {
 
 		String name = args[0];
 
+		@SuppressWarnings("deprecation")
 		OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
 
 		if (plugin.getTotemsManager().totemExists(name) && player != null) {

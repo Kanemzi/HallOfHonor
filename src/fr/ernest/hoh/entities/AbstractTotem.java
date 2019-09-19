@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.ernest.hoh.HallOfHonor;
+import fr.ernest.hoh.utils.Message;
 import net.md_5.bungee.api.ChatColor;
 
 public class AbstractTotem {
@@ -37,8 +38,7 @@ public class AbstractTotem {
 			return;
 		owner = player;
 		// @TODO: Play sound
-		plugin.getServer().broadcastMessage(ChatColor.GOLD + "Le totem " + ChatColor.YELLOW + name
-				+ ChatColor.GOLD + " a �t� pris par " + ChatColor.YELLOW + owner.getName());
+		plugin.getServer().broadcastMessage(Message.TOTEM_TAKEN.format(name, owner.getName()));
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class AbstractTotem {
 	 */
 	public OfflinePlayer removeOwner() {
 		// @TODO: Play sound
-		plugin.getServer().broadcastMessage(ChatColor.YELLOW + owner.getName() + ChatColor.GOLD + " a perdu le totem " + ChatColor.YELLOW + name);
+		plugin.getServer().broadcastMessage(Message.TOTEM_REVOKED.format(owner.getName(), name));
 		OfflinePlayer oldowner = owner;
 		owner = null;
 		return oldowner;
