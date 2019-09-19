@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.ernest.hoh.HallOfHonor;
+import fr.ernest.hoh.sfx.TotemTakenParticles;
 import fr.ernest.hoh.utils.Message;
 import net.md_5.bungee.api.ChatColor;
 
@@ -37,7 +38,7 @@ public class AbstractTotem {
 		if (owner != null)
 			return;
 		owner = player;
-		// @TODO: Play sound
+		new TotemTakenParticles(plugin, this).start();
 		plugin.getServer().broadcastMessage(Message.TOTEM_TAKEN.format(name, owner.getName()));
 	}
 
