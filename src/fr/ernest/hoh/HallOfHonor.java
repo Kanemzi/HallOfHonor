@@ -18,8 +18,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.ernest.hoh.listeners.PlayerDropItemListener;
 import fr.ernest.hoh.utils.StoreManager;
-import fr.ernest.listeners.PlayerDropItemListener;
 import net.md_5.bungee.api.ChatColor;
 
 public class HallOfHonor extends JavaPlugin {

@@ -1,4 +1,4 @@
-package fr.ernest.commands;
+package fr.ernest.hoh.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
