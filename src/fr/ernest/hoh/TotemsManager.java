@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import fr.ernest.hoh.commands.CreateTotemCommand;
 import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
+import fr.ernest.hoh.effects.WarriorManager;
 import fr.ernest.hoh.entities.AbstractTotem;
 
 public class TotemsManager {
@@ -28,6 +29,9 @@ public class TotemsManager {
 		
 		store = plugin.getStoreManager().addStore("totems");
 		totems.putAll(AbstractTotem.load(store));
+		
+		// start totems managers
+		new WarriorManager().start();
 	}
 
 	public void addTotem(String name, Location location) {
