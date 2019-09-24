@@ -8,12 +8,16 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.ernest.hoh.HallOfHonor;
+import fr.ernest.hoh.sfx.TotemTakenParticles;
+import fr.ernest.hoh.utils.Message;
+import fr.ernest.hoh.utils.SoundManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class AbstractTotem {
@@ -36,9 +40,9 @@ public class AbstractTotem {
 		if (owner != null)
 			return;
 		owner = player;
-		// @TODO: Play sound
-		plugin.getServer().broadcastMessage(ChatColor.GOLD + "Le totem " + ChatColor.YELLOW + name
-				+ ChatColor.GOLD + " a �t� pris par " + ChatColor.YELLOW + owner.getName());
+		new TotemTakenParticles(plugin, this).start();
+		plugin.getServer().broadcastMessage(Message.TOTEM_TAKEN.format(name, owner.getName()));
+		SoundManager.playToAllPlayers(Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 0.8f);
 	}
 
 	/**
@@ -46,10 +50,10 @@ public class AbstractTotem {
 	 * @return the ex-owner of the totem
 	 */
 	public OfflinePlayer removeOwner() {
-		// @TODO: Play sound
-		plugin.getServer().broadcastMessage(ChatColor.YELLOW + owner.getName() + ChatColor.GOLD + " a perdu le totem " + ChatColor.YELLOW + name);
 		OfflinePlayer oldowner = owner;
 		owner = null;
+		plugin.getServer().broadcastMessage(Message.TOTEM_REVOKED.format(oldowner.getName(), name));
+		SoundManager.playToAllPlayers(Sound.ENTITY_WITHER_SPAWN, 1.2f);
 		return oldowner;
 	}
 

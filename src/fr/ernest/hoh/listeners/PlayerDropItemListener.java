@@ -1,4 +1,4 @@
-package fr.ernest.listeners;
+package fr.ernest.hoh.listeners;
 
 import java.util.UUID;
 
@@ -24,6 +24,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.ernest.hoh.HallOfHonor;
 import fr.ernest.hoh.entities.AbstractTotem;
+import fr.ernest.hoh.utils.Message;
 import net.md_5.bungee.api.ChatColor;
 
 public class PlayerDropItemListener implements Listener {
@@ -47,43 +48,10 @@ public class PlayerDropItemListener implements Listener {
 				return; // not a banner
 			}
 		}
-		
-//		Entity armorStand = null;
-//		for (Entity e : near) {
-//			if (e instanceof ArmorStand) {
-//				plugin.getServer().broadcastMessage("near");
-//				plugin.getServer().broadcastMessage(
-//						ChatColor.GREEN + e.getCustomName() + " armor near : " + e.getScoreboardTags());
-//				Location l = e.getLocation().clone();
-//				l.setY(l.getY() + 2);
-//
-//				Block b = e.getWorld().getBlockAt(l);
-//				BlockState bs = b.getState();
-//
-//				if (bs instanceof Banner) {
-//					if (bs.hasMetadata("Owner")) {
-//						plugin.getServer().broadcastMessage(
-//								ChatColor.GOLD + "banner owner : " + bs.getMetadata("Owner").get(0).value());
-//					} else {
-//						bs.setMetadata("Owner", new FixedMetadataValue(plugin, p.getDisplayName()));
-//					}
-//
-//				} else {
-//					plugin.getServer().broadcastMessage(ChatColor.GREEN + "The totem is available !");
-//				}
-//			}
-//		}
 	}
 	
 	public void revokeTotem(final Player p, final Item i) {
 		final SkullMeta head = (SkullMeta) i.getItemStack().getItemMeta();
-		// System.out.println(head.getOwningPlayer().getName() + " " + head.getOwningPlayer().getUniqueId());
-		
-		// plugin.getServer().broadcastMessage(p.getName() + " balance la t�te de "
-		// + ((SkullMeta) i.getItemStack().getItemMeta()).getOwningPlayer().getName());
-
-		// List<Entity> near = i.getNearbyEntities(2.0, 2.0, 2.0);
-		// getServer().broadcastMessage("near : " + near);
 
 		new BukkitRunnable() {
 			
@@ -131,8 +99,6 @@ public class PlayerDropItemListener implements Listener {
 						plugin.getStoreManager().saveStore("totems");
 						// System.out.println("OWNER REMOVED " + totemOwner);
 					}
-				} else {
-					p.sendMessage("dropping head " + minDistance + "  " + nearestTotem.getName());					
 				}
 				// p.sendMessage(ChatColor.GOLD + "Near totem : " + ChatColor.YELLOW + nearestTotem.getName());
 				
@@ -184,10 +150,9 @@ public class PlayerDropItemListener implements Listener {
 							totemTakenEffects(nearestTotem, i, b);
 						}
 					} else {
-						p.sendMessage(ChatColor.YELLOW + nearestTotem.getOwner().getName() + ChatColor.RED + " possède déjà le totem " + ChatColor.YELLOW + nearestTotem.getName());
+						p.sendMessage(Message.TOTEM_ALREADY_OWNED.format(nearestTotem.getOwner().getName(), nearestTotem.getName()));
 					}
 				}
-				// p.sendMessage(ChatColor.GOLD + "Near totem : " + ChatColor.YELLOW + nearestTotem.getName());
 				
 				return;
 			}

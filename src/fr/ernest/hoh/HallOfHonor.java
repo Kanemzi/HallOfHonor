@@ -2,8 +2,8 @@ package fr.ernest.hoh;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.ernest.hoh.listeners.PlayerDropItemListener;
 import fr.ernest.hoh.utils.StoreManager;
-import fr.ernest.listeners.PlayerDropItemListener;
 
 public class HallOfHonor extends JavaPlugin {
 

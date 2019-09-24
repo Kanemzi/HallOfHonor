@@ -1,18 +1,14 @@
 package fr.ernest.hoh;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import fr.ernest.commands.CreateTotemCommand;
-import fr.ernest.commands.RemoveTotemCommand;
-import fr.ernest.commands.SetTotemOwnerCommand;
+import fr.ernest.hoh.commands.CreateTotemCommand;
+import fr.ernest.hoh.commands.RemoveTotemCommand;
+import fr.ernest.hoh.commands.SetTotemOwnerCommand;
 import fr.ernest.hoh.entities.AbstractTotem;
 
 public class TotemsManager {

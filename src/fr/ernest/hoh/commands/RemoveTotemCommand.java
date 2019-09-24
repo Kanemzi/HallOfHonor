@@ -1,15 +1,12 @@
-package fr.ernest.commands;
+package fr.ernest.hoh.commands;
 
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.ernest.hoh.HallOfHonor;
-import fr.ernest.hoh.entities.AbstractTotem;
-import net.md_5.bungee.api.ChatColor;
+import fr.ernest.hoh.utils.Message;
 
 public class RemoveTotemCommand implements CommandExecutor {
 
@@ -29,13 +26,11 @@ public class RemoveTotemCommand implements CommandExecutor {
 
 		if (plugin.getTotemsManager().totemExists(name)) {
 			plugin.getTotemsManager().removeTotem(name);
-			sender.sendMessage(
-					ChatColor.GREEN + "The totem " + ChatColor.YELLOW + name + ChatColor.GREEN + " has been removed");
+			sender.sendMessage(Message.TOTEM_REMOVED.format(name));
 			plugin.getStoreManager().saveStore("totems");
 			return true;
 		} else {
-			sender.sendMessage(
-					ChatColor.RED + "The totem " + ChatColor.YELLOW + name + ChatColor.RED + " does not exists");
+			sender.sendMessage(Message.TOTEM_NOT_EXISTS.format(name));
 			return true;
 		}
 	}

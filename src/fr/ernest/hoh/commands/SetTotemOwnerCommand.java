@@ -1,4 +1,4 @@
-package fr.ernest.commands;
+package fr.ernest.hoh.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,6 +29,7 @@ public class SetTotemOwnerCommand implements CommandExecutor {
 
 		String name = args[0];
 
+		@SuppressWarnings("deprecation")
 		OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
 
 		if (plugin.getTotemsManager().totemExists(name) && player != null) {
