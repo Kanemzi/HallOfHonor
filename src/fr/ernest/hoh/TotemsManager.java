@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import fr.ernest.hoh.commands.CreateTotemCommand;
 import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
+import fr.ernest.hoh.effects.SpyManager;
 import fr.ernest.hoh.effects.WarriorManager;
 import fr.ernest.hoh.entities.AbstractTotem;
 
@@ -32,6 +33,7 @@ public class TotemsManager {
 		
 		// start totems managers
 		new WarriorManager().start();
+		new SpyManager().start();
 	}
 
 	public void addTotem(String name, Location location) {
