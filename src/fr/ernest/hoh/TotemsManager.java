@@ -10,10 +10,10 @@ import fr.ernest.hoh.commands.CreateTotemCommand;
 import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
 import fr.ernest.hoh.effects.SpyManager;
+import fr.ernest.hoh.effects.TaxmanManager;
 import fr.ernest.hoh.effects.WarriorManager;
 import fr.ernest.hoh.effects.WolfManager;
 import fr.ernest.hoh.entities.AbstractTotem;
-import fr.ernest.hoh.listeners.PlayerDropItemListener;
 
 public class TotemsManager {
 
@@ -36,6 +36,7 @@ public class TotemsManager {
 		// start totems managers
 		new WarriorManager().start();
 		new SpyManager().start();
+		new TaxmanManager().start();
 		
 		WolfManager wm = new WolfManager();
 		wm.start();

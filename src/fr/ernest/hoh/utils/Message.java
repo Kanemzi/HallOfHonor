@@ -46,8 +46,14 @@ public enum Message {
 		+ ChatColor.YELLOW + "${0}"
 		+ ChatColor.GOLD + "a été pris par "
 		+ ChatColor.YELLOW + "${1}"
-	);
+	),
 
+	TAXES_COLLECTED(
+		ChatColor.GREEN + "Voici "
+		+ ChatColor.YELLOW + "${0}"
+		+ ChatColor.GREEN + " émeraudes monseigneur !"
+	);
+	
 	private String text;
 
 	private Message(String text) {
