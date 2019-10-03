@@ -11,8 +11,10 @@ import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
 import fr.ernest.hoh.effects.MurdererManager;
 import fr.ernest.hoh.effects.SpyManager;
+import fr.ernest.hoh.effects.TaxmanManager;
 import fr.ernest.hoh.effects.ThiefManager;
 import fr.ernest.hoh.effects.WarriorManager;
+import fr.ernest.hoh.effects.WolfManager;
 import fr.ernest.hoh.entities.AbstractTotem;
 
 public class TotemsManager {
@@ -36,6 +38,12 @@ public class TotemsManager {
 		// start totems managers
 		new WarriorManager().start();
 		new SpyManager().start();
+		new TaxmanManager().start();
+
+		WolfManager wm = new WolfManager();
+		wm.start();
+		
+		plugin.getServer().getPluginManager().registerEvents(wm, plugin);
 		plugin.getServer().getPluginManager().registerEvents(new ThiefManager(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new MurdererManager(), plugin);
 	}
