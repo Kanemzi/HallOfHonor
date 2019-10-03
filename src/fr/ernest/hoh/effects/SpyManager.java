@@ -16,8 +16,10 @@ import net.md_5.bungee.api.ChatColor;
 
 public class SpyManager extends DailyEffect implements TotemManager {
 	
+	
+	public static final String NAME = "Spy";
 	public static float DROP_CHANCE = 0.3f;
-	public static float SPEED_CHANCE = 0.5f;
+	public static float SPEED_CHANCE = 0.7f;
 	
 	public static SpyManager instance = null;
 	private BukkitRunnable spyRunnable;
@@ -34,9 +36,9 @@ public class SpyManager extends DailyEffect implements TotemManager {
 		spyRunnable = new BukkitRunnable() {	
 			@Override
 			public void run() {
-				AbstractTotem totem = plugin.getTotemsManager().getTotem("Spy");
+				AbstractTotem totem = plugin.getTotemsManager().getTotem(NAME);
 				if (totem == null) return; 
-				
+
 				OfflinePlayer owner = totem.getOwner();
 				if (owner == null) return;
 				

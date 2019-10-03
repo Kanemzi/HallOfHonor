@@ -9,7 +9,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import fr.ernest.hoh.commands.CreateTotemCommand;
 import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
+import fr.ernest.hoh.effects.MurdererManager;
 import fr.ernest.hoh.effects.SpyManager;
+import fr.ernest.hoh.effects.ThiefManager;
 import fr.ernest.hoh.effects.WarriorManager;
 import fr.ernest.hoh.entities.AbstractTotem;
 
@@ -34,6 +36,8 @@ public class TotemsManager {
 		// start totems managers
 		new WarriorManager().start();
 		new SpyManager().start();
+		plugin.getServer().getPluginManager().registerEvents(new ThiefManager(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new MurdererManager(), plugin);
 	}
 
 	public void addTotem(String name, Location location) {

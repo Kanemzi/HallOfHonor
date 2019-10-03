@@ -148,6 +148,7 @@ public class PlayerDropItemListener implements Listener {
 							nearestTotem.save(plugin.getStoreManager().getStore("totems"));
 							plugin.getStoreManager().saveStore("totems");
 							totemTakenEffects(nearestTotem, i, b);
+							i.remove();
 						}
 					} else {
 						p.sendMessage(Message.TOTEM_ALREADY_OWNED.format(nearestTotem.getOwner().getName(), nearestTotem.getName()));

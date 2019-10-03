@@ -7,20 +7,20 @@ public enum Message {
 	TOTEM_CREATED(
 		ChatColor.GREEN + "Le totem " 
 		+ ChatColor.YELLOW + "${0}"
-		+ ChatColor.GREEN + " a √©t√© cr√©√© en "
+		+ ChatColor.GREEN + " a ÈtÈ crÈÈ en "
 		+ ChatColor.AQUA + "${1} ${2} ${3}"
 	),
 	
 	TOTEM_ALREADY_EXISTS(
 		ChatColor.RED + "Le totem " 
 		+ ChatColor.YELLOW + "${0}"
-		+ ChatColor.RED + " existe d√©j√†"
+		+ ChatColor.RED + " existe dÈj‡†"
 	), 
 	
 	TOTEM_REMOVED (
 		ChatColor.GREEN + "Le totem " 
 		+ ChatColor.YELLOW + "${0}"
-		+ ChatColor.GREEN + " a √©t√© supprim√©"
+		+ ChatColor.GREEN + " a ÈtÈ supprimÈ"
 	),
 		
 	TOTEM_NOT_EXISTS(
@@ -31,7 +31,7 @@ public enum Message {
 
 	TOTEM_ALREADY_OWNED(
 		ChatColor.YELLOW + "${0}"
-		+ ChatColor.RED + " poss√®de d√©j√† le totem "
+		+ ChatColor.RED + " possËde dÈj‡† le totem "
 		+ ChatColor.YELLOW + "${1}"
 	),
 	
@@ -44,7 +44,7 @@ public enum Message {
 	TOTEM_TAKEN(
 		ChatColor.GOLD + "Le totem "
 		+ ChatColor.YELLOW + "${0}"
-		+ ChatColor.GOLD + "a √©t√© pris par "
+		+ ChatColor.GOLD + " a ÈtÈ pris par "
 		+ ChatColor.YELLOW + "${1}"
 	);
 

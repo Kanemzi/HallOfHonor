@@ -11,6 +11,7 @@ import fr.ernest.hoh.entities.AbstractTotem;
 
 public class WarriorManager implements TotemManager {
 	
+	public static final String NAME = "Warrior";
 	public static WarriorManager instance = null;
 	private BukkitRunnable warriorRunnable;
 	
@@ -27,7 +28,7 @@ public class WarriorManager implements TotemManager {
 			
 			@Override
 			public void run() {
-				AbstractTotem totem = plugin.getTotemsManager().getTotem("Warrior");
+				AbstractTotem totem = plugin.getTotemsManager().getTotem(NAME);
 				if (totem == null) return; 
 				
 				OfflinePlayer owner = totem.getOwner();
