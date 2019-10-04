@@ -34,7 +34,7 @@ public class WarriorManager implements TotemManager {
 				OfflinePlayer owner = totem.getOwner();
 				if (owner == null) return;
 				
-				Player p = owner.getPlayer();
+				Player p = plugin.getServer().getPlayer(owner.getName());
 				if (p == null) return;
 				
 				p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 10 * 20, 0));

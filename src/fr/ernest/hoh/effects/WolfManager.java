@@ -15,6 +15,8 @@ import fr.ernest.hoh.entities.AbstractTotem;
 
 public class WolfManager implements TotemManager, Listener {
 	
+	public static final String NAME = "Wolf";
+	
 	public static WolfManager instance = null;
 	private BukkitRunnable wolfRunnable;
 	
@@ -29,13 +31,13 @@ public class WolfManager implements TotemManager, Listener {
 	@EventHandler
 	public void onPlayerDamage(EntityDamageByEntityEvent e) {
 		
-		AbstractTotem totem = plugin.getTotemsManager().getTotem("Wolf");
+		AbstractTotem totem = plugin.getTotemsManager().getTotem(NAME);
 		if (totem == null) return;
 		
 		OfflinePlayer owner = totem.getOwner();
 		if (owner == null) return;
 		
-		Player wolf = owner.getPlayer();
+		Player wolf = plugin.getServer().getPlayer(owner.getName());
 		if (wolf == null) return;
 		
 		Entity damaged = e.getEntity();
@@ -46,11 +48,11 @@ public class WolfManager implements TotemManager, Listener {
 		
 		Player victim = (Player) damaged;
 		
-		if (wolf.equals((Player) damager)) {
+		if (wolf.equals(damager)) {
 			long time = wolf.getWorld().getTime();
 			
 			if (time > 13000) {
-				victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 4, 0));
+				victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 4, 0), true);
 			}
 		}
 	}
@@ -60,13 +62,14 @@ public class WolfManager implements TotemManager, Listener {
 			
 			@Override
 			public void run() {
+				
 				AbstractTotem totem = plugin.getTotemsManager().getTotem("Wolf");
 				if (totem == null) return; 
 				
 				OfflinePlayer owner = totem.getOwner();
 				if (owner == null) return;
 				
-				Player p = owner.getPlayer();
+				Player p = plugin.getServer().getPlayer(owner.getName());
 				if (p == null) return;
 				
 				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 20, 0), true);

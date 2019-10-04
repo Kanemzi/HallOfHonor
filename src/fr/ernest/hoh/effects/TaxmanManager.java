@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import fr.ernest.hoh.HallOfHonor;
 import fr.ernest.hoh.entities.AbstractTotem;
 import fr.ernest.hoh.utils.Message;
 import fr.ernest.hoh.utils.SoundManager;
@@ -17,6 +18,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class TaxmanManager extends DailyEffect implements TotemManager {
 	
+	public static final String NAME = "Taxman";
 	public static int MIN_EMERALDS = 2;
 	public static int MAX_EMERALDS = 5;
 	
@@ -35,13 +37,13 @@ public class TaxmanManager extends DailyEffect implements TotemManager {
 		taxmanRunnable = new BukkitRunnable() {	
 			@Override
 			public void run() {
-				AbstractTotem totem = plugin.getTotemsManager().getTotem("Taxman");
-				if (totem == null) return; 
+				AbstractTotem totem = plugin.getTotemsManager().getTotem(NAME);
+				if (totem == null) return;
 				
 				OfflinePlayer owner = totem.getOwner();
 				if (owner == null) return;
 				
-				Player p = owner.getPlayer();
+				Player p = plugin.getServer().getPlayer(owner.getName());
 				if (p == null) return;
 				
 				Random r = new Random();
@@ -56,7 +58,7 @@ public class TaxmanManager extends DailyEffect implements TotemManager {
 				}
 				
 				p.playSound(p.getLocation(), Sound.BLOCK_GLASS_BREAK, 1f, 1f);
-				p.sendMessage(Message.TAXES_COLLECTED.format(emeraldCount));	
+				p.sendMessage(Message.TAXES_COLLECTED.format(emeraldCount));
 			}
 		};
 		taxmanRunnable.runTaskTimer(plugin, getDelayBeforeTime(), 24000);

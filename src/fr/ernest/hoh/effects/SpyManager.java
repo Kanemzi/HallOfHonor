@@ -42,7 +42,7 @@ public class SpyManager extends DailyEffect implements TotemManager {
 				OfflinePlayer owner = totem.getOwner();
 				if (owner == null) return;
 				
-				Player p = owner.getPlayer();
+				Player p = plugin.getServer().getPlayer(owner.getName());
 				if (p == null) return;
 				
 				Random r = new Random();
@@ -64,6 +64,6 @@ public class SpyManager extends DailyEffect implements TotemManager {
 				}
 			}
 		};
-		spyRunnable.runTaskTimer(plugin, getDelayBeforeTime(), 24000);
+		spyRunnable.runTaskTimer(plugin, getDelayBeforeTime(), 20 * 5);
 	}
 }

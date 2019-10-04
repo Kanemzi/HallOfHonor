@@ -40,7 +40,7 @@ public class MurdererManager implements Listener {
 		OfflinePlayer owner = totem.getOwner();
 		if (owner == null) return;
 		
-		Player murderer = owner.getPlayer();
+		Player murderer = plugin.getServer().getPlayer(owner.getName());
 		if (murderer == null) return;
 		
 		Entity damaged = e.getEntity();
@@ -56,8 +56,7 @@ public class MurdererManager implements Listener {
 		if (!(cause instanceof Player)) return;
 		Player source = (Player) cause;
 		
-		if (murderer.equals((Player) source)) {
-			System.out.println("CAUSE : HIT BY MURDERER");
+		if (murderer.getUniqueId().equals(source.getUniqueId())) {
 
 			ItemStack poison = null;
 			PotionMeta poisonMeta = null;

@@ -36,7 +36,7 @@ public class ThiefManager implements Listener {
 		OfflinePlayer owner = totem.getOwner();
 		if (owner == null) return;
 		
-		Player thief = owner.getPlayer();
+		Player thief = plugin.getServer().getPlayer(owner.getName());
 		if (thief == null) return;
 		
 		Entity damaged = e.getEntity();
@@ -46,7 +46,7 @@ public class ThiefManager implements Listener {
 		if (!(damager instanceof Player)) return;
 		
 		Player victim = (Player) damaged;
-		if (thief.equals((Player) damager)) {
+		if (thief.equals(damager)) {
 			
 			if (random.nextFloat() > DROP_RATE) return;
 			
