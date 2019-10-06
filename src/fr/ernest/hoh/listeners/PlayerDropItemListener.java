@@ -25,7 +25,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import fr.ernest.hoh.HallOfHonor;
 import fr.ernest.hoh.entities.AbstractTotem;
 import fr.ernest.hoh.utils.Message;
-import net.md_5.bungee.api.ChatColor;
 
 public class PlayerDropItemListener implements Listener {
 

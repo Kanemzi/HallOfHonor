@@ -11,6 +11,7 @@ import fr.ernest.hoh.commands.RemoveTotemCommand;
 import fr.ernest.hoh.commands.SetTotemOwnerCommand;
 import fr.ernest.hoh.effects.MurdererManager;
 import fr.ernest.hoh.effects.SpyManager;
+import fr.ernest.hoh.effects.SyllogomaneManager;
 import fr.ernest.hoh.effects.TaxmanManager;
 import fr.ernest.hoh.effects.ThiefManager;
 import fr.ernest.hoh.effects.WarriorManager;
@@ -46,6 +47,7 @@ public class TotemsManager {
 		plugin.getServer().getPluginManager().registerEvents(wm, plugin);
 		plugin.getServer().getPluginManager().registerEvents(new ThiefManager(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new MurdererManager(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new SyllogomaneManager(), plugin);
 	}
 
 	public void addTotem(String name, Location location) {

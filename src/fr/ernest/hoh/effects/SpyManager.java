@@ -64,6 +64,6 @@ public class SpyManager extends DailyEffect implements TotemManager {
 				}
 			}
 		};
-		spyRunnable.runTaskTimer(plugin, getDelayBeforeTime(), 20 * 5);
+		spyRunnable.runTaskTimer(plugin, getDelayBeforeTime(), 24000);
 	}
 }

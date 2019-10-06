@@ -2,6 +2,7 @@ package fr.ernest.hoh;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.ernest.hoh.effects.SyllogomaneManager;
 import fr.ernest.hoh.listeners.PlayerDropItemListener;
 import fr.ernest.hoh.utils.StoreManager;
 

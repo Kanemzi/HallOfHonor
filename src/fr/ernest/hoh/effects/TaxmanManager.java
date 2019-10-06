@@ -34,7 +34,7 @@ public class TaxmanManager extends DailyEffect implements TotemManager {
 
 	@Override
 	public void start() {
-		taxmanRunnable = new BukkitRunnable() {	
+		taxmanRunnable = new BukkitRunnable() {
 			@Override
 			public void run() {
 				AbstractTotem totem = plugin.getTotemsManager().getTotem(NAME);
